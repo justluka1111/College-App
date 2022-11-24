@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> Contact Us</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="newstyle.css"> 
+ <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+<style>  
+     select {
+         height: 30px;
+        width: 150px;
+        margin: 10px;
+    }
+    select:focus {
+        min-width: 150px;
+        width: auto;
+    }
+             button{
+                font-weight: bold;
+            }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+            /* Desktop styling */
+@media screen and (min-width: 768px) {
+            footer {
+  text-align: center;
+  padding: 2px;
+  background-color: black;
+  color: white;
+}
+fieldset{
+  border: 1px solid #ffcc74;
+  width: 600px;
+  margin:auto;
+  text-align: center;
+}
+legend{
+    font-size: 1.25em;
+    padding:0.25em;
+    color:white;
+}
+textarea{
+     padding:.5em;
+        border:solid 2px coral;
+}
+    label{
+        font-size: 20px;
+        color: white;
+        display:block;
+        margin-top: 1em;
+        font-weight: bold;
+    }
+    label:first-of-type{
+        margin-top: 0;
+    }
+    input{
+        padding:.5em;
+        border:solid 2px goldenrod;
+            }
+            input[type="email"], input[type="text"]{
+                width:15em;
+                
+            }
+            input[type="submit"] {
+            padding:.5em lem;
+            border-radius: 6px;
+            background-color:white;
+            color : white;
+            font-family: 'Lato',sans-serif;
+            font-size:.8em;
+            }
+}
+            div button{
+                
+    padding:7px 30px;
+    background-color:goldenrod;
+    border:none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3sease 0s;
+    font-size:13px;
+    font-weight: bold;
+            }
+            div h1{
+                font-size: 20px;
+                color: white;
+            }
+            .cal h1{
+                font-size: 18px;
+                color: white;
+            }
+            .maa h2{
+               font-size: 25px;
+                color: white; 
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="home">
+           <div class="logo">
+            <img src="Images/logo.png" alt="logo" height="100" width="120">
+           </div>
+        
+            <ul class="nav_links">
+                <li><a href="index.html">HOME PAGE</a></li> 
+                <li><a href="monthscourses.html">CONTACT US</a></li>   
+                <li><a href="about.html">ABOUT US</a> </li>
+             <div class="dropdown">
+                        <ul>
+  <button class="dropbtn">COURSES</button>
+  <div class="dropdown-content">
+    <a href="monthscourses.html">Six-Months Courses</a>
+    <a href="weekscourses.html">Six-Weeks Courses</a>
+    </ul>
+  </div>
+            
+            </ul>
+        </div>
+  
+       <br><br><br><br><br><br><br><br><br>
+        <div>
+            
+            <div class="maa">
+            <center><h2> CALCULATE FEES FOR SIX-MONTHS COURSE</h2></center><br>
+        <section>
+            
+                <fieldset>
+                    
+           
+         
+                    <div class="cal">
+               
+               <form name="cfrm-pin" method="post" action="pin-index.php">
+                   <input type="hidden" name="mode" value="PinRequest"/>  
+                   <label ><b>Number of Courses </b></label>
+                   <select name="tot_pin_requested" onchange="calculateAmount(this.value)" required>
+                       <option value="" disabled selected>Select</option>
+                       <option value="1">1</option>
+                       <option value="2">2</option>
+                       <option value="3">3</option>
+                       <option value="4">4</option>
+                   </select><br>
+                   <label><b>Price</b></label>
+                   <input name="pri" id="priceT" type="text" readonly>
+                   <label><b>Discount</b></label>
+                   <input name="discount" id="discount" type="text" readonly><br>
+                    <label><b>Subtotal</b></label>
+                   <input name="subtotal" id="subtotal" type="text" readonly><br>
+                   <label><b>Total VAT included </b></label>
+                   <input name="tot_amount" id="tot-amount" type="text" readonly><br><br>
+                   
+                           <script>
+                       function calculateAmount(val){         
+                           if(val==2){
+                              
+                                  var tot_price = val * 1500;
+                               var disc = tot_price * 0.05;
+                               var totdisc = tot_price - disc;
+                               var divobj = document.getElementById('discount');
+                           divobj.value= disc;
+                           
+                           var subt = document.getElementById('subtotal');
+                           subt.value= totdisc;
+                           
+                           var ivat = totdisc * 0.15;
+                           var totvat = ivat + totdisc;
+                           var resvat = document.getElementById('tot-amount');
+                           resvat.value= totvat;
+                           var price = document.getElementById('priceT');
+                                price.value= 1500;
+                           } else if(val==3){
+                                 
+                                  var tot_price = val * 1500;
+                               var disc = tot_price *0.1;
+                               var totdisc = tot_price - disc;
+                               var divobj = document.getElementById('discount');
+                           divobj.value= disc;
+                           
+                           var subt = document.getElementById('subtotal');
+                           subt.value= totdisc;
+                           
+                           var ivat = totdisc * 0.15;
+                           var totvat = totdisc + ivat;
+                           var resvat = document.getElementById('tot-amount');
+                           resvat.value= totvat;
+                           
+                            var price = document.getElementById('priceT');
+                                price.value= 1500;
+                           } else if(val>3){
+                                  var tot_price = val * 1500;
+                               var disc = tot_price *0.15;
+                               var totdisc = tot_price - disc;
+                               var divobj = document.getElementById('discount');
+                           divobj.value= disc;
+                           
+                           var subt = document.getElementById('subtotal');
+                           subt.value= totdisc;
+                           
+                           var ivat = totdisc * 0.15;
+                           var totvat = totdisc + ivat;
+                           var resvat = document.getElementById('tot-amount');
+                           resvat.value= totvat;
+                            var price = document.getElementById('priceT');
+                                price.value= 1500;
+                           } 
+                           else if (val==1){
+                                  
+                           var tot_price = val * 1500;
+                           var vat = tot_price * 0.15;
+                           var totalvat = tot_price + vat;
+                           var divobj = document.getElementById('tot-amount');
+                           divobj.value= totalvat;
+                            var price = document.getElementById('priceT');
+                                price.value= 1500;
+                                
+                                var divobj = document.getElementById('discount');
+                           divobj.value= 0;
+                           
+                           var subt = document.getElementById('subtotal');
+                           subt.value= 1500;
+                          }
+                           else
+                                  
+                           var tot_price = val * 1500;
+                           var vat = tot_price * 0.15;
+                           var totalvat = tot_price + vat;
+                           var divobj = document.getElementById('tot-amount');
+                           divobj.value= totalvat;
+                            var price = document.getElementById('priceT');
+                                price.value= 1500;
+                                
+                           
+                           
+                          }
+                   </script>
+           </div>
+           
+            
+            </fieldset>
+            
+        </section>
+            
+           </div>
+           
+            
+           </div><br><br>
+   </header>
+     <footer class="footer">
+  	 <div class="cont">
+  	 	<div class="row">
+  	 		<div class="columFooter">
+  	 			<h4>company</h4>
+  	 			<ul>
+  	 				<li><a href="Contact.html">Contact Us</a></li>
+  	 				<li><a href="about.html">About Us</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="columFooter">
+  	 			<h4>Courses</h4>
+  	 			<ul>
+  	 				<li><a href="weekscourses.html">Six-Weeks Courses</a></li>
+  	 				<li><a href="monthscourses.html">Six-Months courses</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="columFooter">
+  	 			<h4>Fees</h4>
+  	 			<ul>
+  	 				<li><a href="monthscalculator.html">Calculate Fees</a></li>
+  	 				<li><a href="newform.html">Apply Now</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="columFooter">
+  	 			<h4>follow us</h4>
+  	 			<div class="social">
+  	 				<a href="https://facebook.com"><i class="fab fa-facebook-f"></i></a>
+  	 				<a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+  	 				<a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+  	 				<a href="https://linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+  	 			</div>
+  	 		</div>
+  	 	</div>
+  	 </div>
+  </footer>
+
+    </body>
+</html>
